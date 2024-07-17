@@ -9,7 +9,7 @@ resource aws_s3_object "my_object" {
 }
 
 data "local_file" "name" {
-  filename = test.txt
+  filename = "test.txt"
   source = aws_s3_object.my_object.content
 }
 
