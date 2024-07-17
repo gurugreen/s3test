@@ -9,7 +9,7 @@ resource aws_s3_object "my_object" {
 }
 
 data "aws_s3_object" "bootstrap_script" {
-  bucket = aws_s3_bucket.my_bucket
+  bucket = aws_s3_bucket.my_bucket.bucket
   key    = "folders/test.txt"
 }
 
