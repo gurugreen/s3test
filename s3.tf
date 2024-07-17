@@ -8,9 +8,9 @@ resource aws_s3_object "my_object" {
   source = "./test.txt"
 }
 
-data "local_file" "name" {
-  filename = "test.txt"
-  source = aws_s3_object.my_object.content
+data "aws_s3_object" "bootstrap_script" {
+  bucket = aws_s3_bucket.my_bucket
+  key    = "folders/test.txt"
 }
 
 resource "aws_s3_bucket" "my_bucket1" {
@@ -20,6 +20,6 @@ resource "aws_s3_bucket" "my_bucket1" {
 resource aws_s3_object "my_object1" {
   bucket = aws_s3_bucket.my_bucket1.bucket
   key    = "folders/test.txt"
-  source = data.local_file.name.filename
+  source = data.aws_s3_object.bootstrap_script.body
 }
 
