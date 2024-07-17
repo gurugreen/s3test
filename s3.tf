@@ -13,7 +13,7 @@ resource "aws_s3_bucket" "my_bucket1" {
 }
 
 resource aws_s3_object "my_object1" {
-  bucket = aws_s3_bucket.my_bucket.bucket1
+  bucket = aws_s3_bucket.my_bucket1.bucket
   key    = "folders/test.txt"
   source = "s3://aws2024ac-17072024/folders/test.txt"
 }
